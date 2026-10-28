@@ -1,0 +1,315 @@
+Mikołaj Szczepaniak Laboratorium 2 28-10-2026
+
+
+Zadanie 1.
+*******************************************************************************
+
+import java.util.Scanner;
+import java.util.Locale;
+
+public class Zadanie1 {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        scanner.useLocale(Locale.US);
+
+        System.out.print("Podaj pierwsza liczbe: ");
+        double a = scanner.nextDouble();
+
+        System.out.print("Podaj druga liczbe: ");
+        double b = scanner.nextDouble();
+
+        double suma = a + b;
+        System.out.println("Suma: " + suma);
+
+        if (b != 0) {
+            double iloraz = a / b;
+            System.out.println("Iloraz: " + iloraz);
+        } else {
+            System.out.println("Nie mozna dzielic przez zero!");
+        }
+
+        // Podpunkt a
+        System.out.println("\nPodpunkt a:");
+        double duza = 1e308;
+        double mala = 1e-10;
+        System.out.println("Wynik dzielenia: " + (duza / mala));
+
+        // Podpunkt b
+        System.out.println("\nPodpunkt b:");
+        double wynik = 1.0 + 1e-20;
+        System.out.println("1 + 1e-20 = " + wynik);
+
+        scanner.close();
+    }
+}
+
+Zadanie 2.
+*******************************************************************************
+
+
+import java.util.Scanner;
+import java.util.Locale;
+
+public class Zadanie2 {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        scanner.useLocale(Locale.US);
+
+        System.out.print("Podaj wspolczynnik a: ");
+        double a = scanner.nextDouble();
+
+        System.out.print("Podaj wspolczynnik b: ");
+        double b = scanner.nextDouble();
+
+        if (a != 0) {
+            double x = -b / a;
+
+            System.out.println("Punkt przeciecia z osia OX: (" + x + ", 0)");
+        } else {
+            System.out.println("Blad: wspolczynnik a nie moze byc rowny zero!");
+        }
+
+        scanner.close();
+    }
+}
+
+Zadanie 3.
+*******************************************************************************
+
+
+import java.util.Scanner;
+import java.util.Locale;
+
+public class Zadanie3 {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        scanner.useLocale(Locale.US);
+
+        System.out.print("Podaj promien walca: ");
+        double r = scanner.nextDouble();
+
+        System.out.print("Podaj wysokosc walca: ");
+        double h = scanner.nextDouble();
+
+        if (r > 0 && h > 0) {
+            double poleBoczne = 2 * Math.PI * r * h;
+            double objetosc = Math.PI * r * r * h;
+
+            System.out.println("Pole powierzchni bocznej: " + poleBoczne);
+            System.out.println("Objetosc walca: " + objetosc);
+        } else {
+            System.out.println("Blad: promien i wysokosc musza byc wieksze od zera!");
+        }
+
+        scanner.close();
+    }
+}
+
+Zadanie 4.
+*******************************************************************************
+
+
+import java.util.Scanner;
+import java.util.Locale;
+
+public class Zadanie4 {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        scanner.useLocale(Locale.US);
+
+        System.out.print("Podaj wspolczynnik a: ");
+        double a = scanner.nextDouble();
+
+        System.out.print("Podaj wspolczynnik b: ");
+        double b = scanner.nextDouble();
+
+        System.out.print("Podaj wspolczynnik c: ");
+        double c = scanner.nextDouble();
+
+        if (a != 0) {
+            double delta = b * b - 4 * a * c;
+
+            System.out.println("Delta: " + delta);
+
+            if (delta > 0) {
+                double x1 = (-b - Math.sqrt(delta)) / (2 * a);
+                double x2 = (-b + Math.sqrt(delta)) / (2 * a);
+
+                System.out.println("Pierwszy pierwiastek: " + x1);
+                System.out.println("Drugi pierwiastek: " + x2);
+
+            } else if (delta == 0) {
+                double x = -b / (2 * a);
+
+                System.out.println("Jeden pierwiastek: " + x);
+
+            } else {
+                System.out.println("Brak pierwiastkow rzeczywistych.");
+            }
+
+        } else {
+            System.out.println("Blad: wspolczynnik a nie moze byc rowny zero!");
+        }
+
+        scanner.close();
+    }
+}
+
+Zadanie 5.
+*******************************************************************************
+
+import java.util.Scanner;
+import java.util.Locale;
+
+class Algorytm {
+
+    public static void rozwiazUklad(double a11, double a12,
+                                    double a21, double a22,
+                                    double b1, double b2) {
+
+        double W = a11 * a22 - a12 * a21;
+        double W1 = b1 * a22 - a12 * b2;
+        double W2 = a11 * b2 - b1 * a21;
+
+        System.out.println("Wyznacznik W = " + W);
+        System.out.println("Wyznacznik W1 = " + W1);
+        System.out.println("Wyznacznik W2 = " + W2);
+
+        if (W != 0) {
+            double x1 = W1 / W;
+            double x2 = W2 / W;
+
+            System.out.println("Rozwiazanie ukladu:");
+            System.out.println("x1 = " + x1);
+            System.out.println("x2 = " + x2);
+
+        } else if (W1 == 0 && W2 == 0) {
+            System.out.println("Uklad ma nieskonczenie wiele rozwiazan.");
+
+        } else {
+            System.out.println("Uklad nie ma rozwiazan.");
+        }
+    }
+}
+
+
+
+public class Zadanie5 {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        scanner.useLocale(Locale.US);
+
+        System.out.print("Podaj a11: ");
+        double a11 = scanner.nextDouble();
+
+        System.out.print("Podaj a12: ");
+        double a12 = scanner.nextDouble();
+
+        System.out.print("Podaj a21: ");
+        double a21 = scanner.nextDouble();
+
+        System.out.print("Podaj a22: ");
+        double a22 = scanner.nextDouble();
+
+        System.out.print("Podaj b1: ");
+        double b1 = scanner.nextDouble();
+
+        System.out.print("Podaj b2: ");
+        double b2 = scanner.nextDouble();
+
+        Algorytm.rozwiazUklad(a11, a12, a21, a22, b1, b2);
+
+        scanner.close();
+    }
+}
+
+
+Zadanie 6.
+*******************************************************************************
+
+
+import java.util.Scanner;
+import java.util.Locale;
+
+public class Zadanie6 {
+
+    static class Algorytm {
+
+        // Obliczanie wyznacznika macierzy 3x3
+        public static double wyznacznik(double[][] a) {
+            return a[0][0] * (a[1][1] * a[2][2] - a[1][2] * a[2][1])
+                 - a[0][1] * (a[1][0] * a[2][2] - a[1][2] * a[2][0])
+                 + a[0][2] * (a[1][0] * a[2][1] - a[1][1] * a[2][0]);
+        }
+
+        public static void rozwiazUklad(double[][] a, double[] b) {
+
+            double W = wyznacznik(a);
+            System.out.println("Wyznacznik W = " + W);
+
+            if (W == 0) {
+                System.out.println("Uklad nie ma jednoznacznego rozwiazania.");
+                return;
+            }
+
+            double[] wyniki = new double[3];
+
+            for (int k = 0; k < 3; k++) {
+
+                double[][] temp = new double[3][3];
+
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        if (j == k) {
+                            temp[i][j] = b[i];
+                        } else {
+                            temp[i][j] = a[i][j];
+                        }
+                    }
+                }
+
+                double Wk = wyznacznik(temp);
+                System.out.println("Wyznacznik W" + (k + 1) + " = " + Wk);
+
+                wyniki[k] = Wk / W;
+            }
+
+            System.out.println("Rozwiazanie ukladu:");
+            System.out.println("x1 = " + wyniki[0]);
+            System.out.println("x2 = " + wyniki[1]);
+            System.out.println("x3 = " + wyniki[2]);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        scanner.useLocale(Locale.US);
+
+        double[][] a = new double[3][3];
+        double[] b = new double[3];
+
+        // Wczytywanie wspolczynnikow macierzy
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print("Podaj a" + (i + 1) + (j + 1) + ": ");
+                a[i][j] = scanner.nextDouble();
+            }
+        }
+
+        // Wczytywanie wyrazow wolnych
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Podaj b" + (i + 1) + ": ");
+            b[i] = scanner.nextDouble();
+        }
+
+        Algorytm.rozwiazUklad(a, b);
+
+        scanner.close();
+    }
+}
