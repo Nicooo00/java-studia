@@ -1,1 +1,179 @@
 Mikołaj Szczepaniak Laboratorium 3 28-10-2026
+
+Zadanie1
+
+package lab3;
+
+import java.util.Scanner;
+
+public class Zadanie1 {
+
+    public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    while (true) {
+      
+       System.out.print("Podaj linie: ");
+       String line = scanner.nextLine();
+       if (line.equalsIgnoreCase("exit")) {
+           break;
+       }
+       
+    }
+    scanner.close();
+}
+}
+
+Zadanie2
+
+package lab3;
+
+import java.util.Scanner;
+
+public class Zadanie2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj linie: ");
+        String line = scanner.nextLine();
+
+        int liczbaA = line.length() - line.replace("a", "").length();
+
+        System.out.println("Liczba liter a: " + liczbaA);
+        scanner.close();
+    }
+}
+
+
+Zadanie3
+
+package lab3;
+
+import java.util.Scanner;
+
+public class Zadanie3 {
+        public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj linie: ");
+        String line = scanner.nextLine();
+
+        line = line.replaceAll("\\s+", " ");
+        System.out.println(line);
+
+        scanner.close();
+        }
+}
+
+
+Zadanie4
+
+package lab3;
+
+import java.util.Scanner;
+
+public class Zadanie4 {
+        public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj linie: ");
+        String line = scanner.nextLine();
+
+        int licznik = 0;
+        for (int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+            if (c == 'a' && i + 1 < line.length() && line.charAt(i + 1) == 'b') {
+                licznik++;
+            }
+        }
+        System.out.println("Liczba wystąpień sekwencji 'ab': " + licznik);
+        scanner.close();
+    }
+}
+
+
+Zadanie5
+
+package lab3;
+
+import java.util.Scanner;
+
+public class Zadanie5 {
+        public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj linie: ");
+        String line = scanner.nextLine();
+        
+        int slowa = 0;
+        for (int i = 0; i < line.length(); i++) {
+            if (line.charAt(i) != ' ' &&
+                (i == 0 || line.charAt(i - 1) == ' ')) {
+                slowa++;
+            }
+        }
+        System.out.println("Liczba słów: " + (slowa));
+        scanner.close();
+        }
+}
+
+
+
+Zadanie6
+
+package lab3;
+
+import java.util.Scanner;
+
+public class Zadanie6 {
+        public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj linie: ");
+        String line = scanner.nextLine();
+        line = line.trim();
+
+        for (int i = 0; i < line.length(); i++) {
+            if (line.charAt(i) != ' ') {
+                System.out.print(line.charAt(i));
+            }
+            else if (line.charAt(i) == ' ' && line.charAt(i + 1) != ' ')
+            {
+                System.out.println();
+            }
+            else
+            {
+                continue;
+            }
+        }
+        scanner.close();
+    }
+}
+
+
+Zadanie7
+
+package lab3;
+
+import java.util.Scanner;
+
+public class Zadanie7 {
+        public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj linie: ");
+        String line = scanner.nextLine();
+
+        int i = 0;
+
+        while (i < line.length()) {
+            if (line.charAt(i) == ' ' || line.charAt(i) == '\t') {
+                i++;
+            } else {
+                break;
+            }
+        }
+  
+        line = line.substring(i);
+        System.out.println(line);
+
+
+        scanner.close();
+}
+}
+
