@@ -3,26 +3,45 @@ package lab5;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+class InvalidSizeException extends RuntimeException {
+    
+    // Konstruktor domyślny
+    public InvalidSizeException() {
+        super();
+    }
+
+    // Konstruktor przyjmujący wiadomość o błędzie
+    public InvalidSizeException(String message) {
+        super(message);
+    }
+}
+
 public class Zadanie3 {
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Podaj rozmiar tablicy: ");
-        int n = scanner.nextInt();
-
-        while(n <= 0)
+        int n;
+        while(true)
         {
+            System.out.print("Podaj rozmiar macierzy: ");
             try
-                {
-                System.out.println("Nieprawidlowy rozmiar!");
-                System.out.print("Podaj rozmiar tablicy: ");
+            {
                 n = scanner.nextInt();
-                }
-            catch(InputMismatchException i)
+                if (n <= 0) 
                 {
-                    System.out.print("nie podano dodatniej cyfry");
+                    throw new InvalidSizeException("Rozmiar nie może być ujemny!");
                 }
+                break;
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.println("Podano zly input!");
+                scanner.next();
+            }
+            catch(InvalidSizeException i)
+            {
+                System.out.print("Bład: " + i.getMessage());
+            }
         }
 
         int[] liczby = new int[n];

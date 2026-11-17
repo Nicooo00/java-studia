@@ -38,21 +38,27 @@ public class Zadanie4 {
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Podaj rozmiar tablicy: ");
-        int n = scanner.nextInt();
-        
-        while(n <= 0)
+        int n;
+        while(true)
         {
+            System.out.print("Podaj rozmiar macierzy: ");
             try
             {
-                System.out.println("Podano nieprawidlowy rozmiar!");
-                System.out.print("Podaj rozmiar tablicy: ");
                 n = scanner.nextInt();
+                if (n <= 0) 
+                {
+                    throw new InvalidSizeException("Rozmiar nie może być ujemny!");
+                }
+                break;
             }
-            catch(InputMismatchException i)
+            catch(InputMismatchException e)
             {
-                System.out.print("Podano zly rozmiar");
+                System.out.println("Podano zly input!");
+                scanner.next();
+            }
+            catch(InvalidSizeException i)
+            {
+                System.out.print("Bład: " + i.getMessage());
             }
         }
         
