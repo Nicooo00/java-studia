@@ -118,3 +118,218 @@ public class Zadanie4 {
         System.out.println(words.length);
 }
 }
+
+Zadanie 5
+*************************************************************************
+
+package lab4;
+import java.util.Scanner;
+
+public class Zadanie5 {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Podaj date (DD.MM.RRRR): ");
+        String data = scanner.nextLine();
+
+        if (data.matches("\\d{2}\\.\\d{2}\\.\\d{4}")) {
+            System.out.println("Poprawny format daty");
+        } else {
+            System.out.println("Niepoprawny format daty");
+        }
+
+        scanner.close();
+    }
+}
+
+Zadanie 6
+*************************************************************************
+
+package lab4;
+import java.util.Scanner;
+
+public class Zadanie6a {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Podaj slowo: ");
+        String slowo = scanner.next();
+        scanner.nextLine();
+
+        System.out.println("Wpisuj tekst:");
+
+        while (true) {
+            String linia = scanner.nextLine();
+
+            if (linia.isEmpty()) {
+                break;
+            }
+
+            if (linia.contains(slowo)) {
+                System.out.println(linia);
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+package lab4;
+
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public class Zadanie6b {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Podaj slowo: ");
+        String slowo = scanner.next();
+        scanner.nextLine();
+
+        System.out.println("Wpisuj tekst:");
+
+        while (true) {
+            String linia = scanner.nextLine();
+
+            if (linia.isEmpty()) {
+                break;
+            }
+
+            if (Pattern.compile(Pattern.quote(slowo)).matcher(linia).find()) {
+                System.out.println(linia);
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+Zadanie 7
+*************************************************************************
+
+package lab4;
+
+public class Zadanie7 {
+    public static void main(String[] args)
+    {
+        int los;
+        int i = 0;
+        int j = 0;
+        while(i < 100)
+        {
+            los = (int) (Math.random() * 100);
+            i += 1;
+            if (los < 20)
+            {
+                System.out.println(los);
+                j += 1;
+            }
+
+            if(j >= 10)
+            {
+                System.out.println("Udalo sie wylosowac 10 takich liczb!");
+                System.out.print("Licznik: " + i);
+                break;
+            }
+        }
+    }
+
+}
+
+Zadanie 8
+*************************************************************************
+
+package lab4;
+
+public class Zadanie8 {
+    public static void main(String[] args)
+    {
+        int x = 10;
+
+        for(int i = 1; i <= 5; i++)
+        {
+            for(int j = 0; j < i;j++)
+            {
+                System.out.print(x + " ");
+                x += 2;
+            }
+            System.out.println();
+        }
+
+    }
+    
+}
+
+
+Zadanie 9
+*************************************************************************
+
+package lab4;
+
+public class Zadanie9 {
+
+    public static int pozycja(char znak, char[] alfabet) {
+        for (int i = 0; i < alfabet.length; i++) {
+            if (alfabet[i] == znak) {
+                return i / 2;
+            }
+        }
+        return -1;
+    }
+
+    public static int porownaj(String a, String b, char[] alfabet) {
+        int n = Math.min(a.length(), b.length());
+
+        for (int i = 0; i < n; i++) {
+            int x = pozycja(a.charAt(i), alfabet);
+            int y = pozycja(b.charAt(i), alfabet);
+
+            if (x != y) {
+                return x - y;
+            }
+        }
+
+        return a.length() - b.length();
+    }
+
+    public static void main(String[] args) {
+
+        char[] litery = new char[26];
+
+        for (int i = 0; i < 26; i++) {
+            litery[i] = (char) ('a' + i);
+        }
+
+        for (int i = 25; i >= 0; i--) {
+            System.out.print(litery[i] + " ");
+        }
+
+        System.out.println();
+
+
+        char[] polski = "aAąĄbBcCćĆdDeEęĘfFgGhHiIjJkKlLłŁmMnNńŃoOóÓpPrRsSśŚtTuUwWyYzZźŹżŻ".toCharArray();
+
+        String[] slowa = {"Żaba", "Zebra", "Ćma", "Ala", "Łódź", "Ącki"};
+
+        for (int i = 0; i < slowa.length - 1; i++) {
+            for (int j = 0; j < slowa.length - 1 - i; j++) {
+
+                if (porownaj(slowa[j], slowa[j + 1], polski) > 0) {
+                    String temp = slowa[j];
+                    slowa[j] = slowa[j + 1];
+                    slowa[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println("Posortowane slowa:");
+
+        for (String slowo : slowa) {
+            System.out.println(slowo);
+        }
+    }
+}

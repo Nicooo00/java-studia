@@ -3,7 +3,7 @@ package lab5;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class zadanie6 {
+public class Zadanie6 {
     static void sortowanie(int[] tablica)
     {
             int x;
