@@ -2,11 +2,11 @@ package lab6;
 
 import java.util.Arrays;
 
-class Dane implements Comparable<Dane> {
+class Dane2 implements Comparable<Dane2> {
     String nazwisko;
 
     @Override
-    public int compareTo(Dane inna) {
+    public int compareTo(Dane2 inna) {
         return this.nazwisko.compareTo(inna.nazwisko);
     }
 }
@@ -14,11 +14,11 @@ class Dane implements Comparable<Dane> {
 public class Zadanie2 {
     public static void main(String[] args)
     {
-        Dane[] informacje = new Dane[3];
+        Dane2[] informacje = new Dane2[3];
 
         for(int i = 0; i < informacje.length; i++)
         {
-            informacje[i] = new Dane();
+            informacje[i] = new Dane2();
         }
 
         informacje[0].nazwisko = "Kowalski";
@@ -34,7 +34,7 @@ public class Zadanie2 {
 
         Arrays.sort(informacje);
 
-        for(Dane informacja : informacje)
+        for(Dane2 informacja : informacje)
         {
             System.out.println(informacja.nazwisko);
         }
