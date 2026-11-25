@@ -14,7 +14,7 @@ class Ksiazka implements Comparable<Ksiazka>
     }
 }
 
-public class Zadanie5 {
+public class Zadanie5_6 {
     public static void main(String[] args) {
 
         Ksiazka[] ksiazki = new Ksiazka[4];
