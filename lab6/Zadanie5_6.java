@@ -1,6 +1,8 @@
 package lab6;
 
 import java.util.Arrays;
+import java.text.Collator;
+import java.util.Locale;
 
 class Ksiazka implements Comparable<Ksiazka> 
 {
@@ -9,8 +11,11 @@ class Ksiazka implements Comparable<Ksiazka>
     int rok;
 
     @Override
-    public int compareTo(Ksiazka inna) {
-        return this.tytul.compareTo(inna.tytul);
+    public int compareTo(Ksiazka inna) 
+    {
+        Collator collator = Collator.getInstance(Locale.forLanguageTag("pl-PL"));
+
+        return collator.compare(inna.tytul, this.tytul);
     }
 }
 

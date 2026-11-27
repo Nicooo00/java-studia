@@ -1,13 +1,18 @@
 package lab6;
 
 import java.util.Arrays;
+import java.text.Collator;
+import java.util.Locale;
 
 class Dane3 implements Comparable<Dane3> {
     String nazwisko;
 
     @Override
-    public int compareTo(Dane3 inna) {
-        return inna.nazwisko.compareTo(this.nazwisko);
+    public int compareTo(Dane3 inna)
+    {
+        Collator collator = Collator.getInstance(Locale.forLanguageTag("pl-PL"));
+
+        return collator.compare(inna.nazwisko, this.nazwisko);
     }
 }
 

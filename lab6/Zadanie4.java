@@ -1,6 +1,8 @@
 package lab6;
 
 import java.util.Arrays;
+import java.text.Collator;
+import java.util.Locale;
 
 class Pracownik implements Comparable<Pracownik> {
     int id;
@@ -9,11 +11,12 @@ class Pracownik implements Comparable<Pracownik> {
 
     @Override
     public int compareTo(Pracownik inny) {
-        int wynik = this.stanowisko.compareTo(inny.stanowisko);
+        Collator collator = Collator.getInstance(Locale.forLanguageTag("pl-PL"));
 
-        if (wynik == 0)
-        {
-            return this.nazwisko.compareTo(inny.nazwisko);
+        int wynik = collator.compare(this.stanowisko, inny.stanowisko);
+
+        if (wynik == 0) {
+            return collator.compare(this.nazwisko, inny.nazwisko);
         }
 
         return wynik;

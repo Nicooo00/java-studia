@@ -29,17 +29,20 @@ public class Zadanie1 {
 
 Zadanie 2
 ******************************************************************
-
 package lab6;
 
 import java.util.Arrays;
+import java.text.Collator;
+import java.util.Locale;
 
 class Dane2 implements Comparable<Dane2> {
     String nazwisko;
 
     @Override
     public int compareTo(Dane2 inna) {
-        return this.nazwisko.compareTo(inna.nazwisko);
+        Collator collator = Collator.getInstance(Locale.forLanguageTag("pl-PL"));
+
+        return collator.compare(this.nazwisko, inna.nazwisko);
     }
 }
 
@@ -73,20 +76,24 @@ public class Zadanie2 {
     }
 }
 
-
 Zadanie 3
 ******************************************************************
 
 package lab6;
 
 import java.util.Arrays;
+import java.text.Collator;
+import java.util.Locale;
 
 class Dane3 implements Comparable<Dane3> {
     String nazwisko;
 
     @Override
-    public int compareTo(Dane3 inna) {
-        return inna.nazwisko.compareTo(this.nazwisko);
+    public int compareTo(Dane3 inna)
+    {
+        Collator collator = Collator.getInstance(Locale.forLanguageTag("pl-PL"));
+
+        return collator.compare(inna.nazwisko, this.nazwisko);
     }
 }
 
@@ -126,6 +133,8 @@ Zadanie 4
 package lab6;
 
 import java.util.Arrays;
+import java.text.Collator;
+import java.util.Locale;
 
 class Pracownik implements Comparable<Pracownik> {
     int id;
@@ -134,11 +143,12 @@ class Pracownik implements Comparable<Pracownik> {
 
     @Override
     public int compareTo(Pracownik inny) {
-        int wynik = this.stanowisko.compareTo(inny.stanowisko);
+        Collator collator = Collator.getInstance(Locale.forLanguageTag("pl-PL"));
 
-        if (wynik == 0)
-        {
-            return this.nazwisko.compareTo(inny.nazwisko);
+        int wynik = collator.compare(this.stanowisko, inny.stanowisko);
+
+        if (wynik == 0) {
+            return collator.compare(this.nazwisko, inny.nazwisko);
         }
 
         return wynik;
@@ -190,6 +200,8 @@ Zadanie 5_6
 package lab6;
 
 import java.util.Arrays;
+import java.text.Collator;
+import java.util.Locale;
 
 class Ksiazka implements Comparable<Ksiazka> 
 {
@@ -198,8 +210,11 @@ class Ksiazka implements Comparable<Ksiazka>
     int rok;
 
     @Override
-    public int compareTo(Ksiazka inna) {
-        return this.tytul.compareTo(inna.tytul);
+    public int compareTo(Ksiazka inna) 
+    {
+        Collator collator = Collator.getInstance(Locale.forLanguageTag("pl-PL"));
+
+        return collator.compare(inna.tytul, this.tytul);
     }
 }
 
